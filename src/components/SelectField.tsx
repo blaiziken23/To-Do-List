@@ -1,4 +1,3 @@
-import { Priority, TCategory, TPriority } from "@/types/todo";
 import {
   Select,
   SelectContent,
@@ -12,13 +11,8 @@ interface SelectFieldProps {
   value?: string;
   contents: string[];
   placeholder: string;
-  onValueChange: (id: number, category: TCategory) => void;
+  onValueChange: (id: number, value: string) => void;
 }
-
-// Function to check if a value is a valid TCategory
-const isPriority = (value: unknown) => {
-  return Priority.includes(value as TPriority);
-};
 
 const SelectField = ({
   id,
@@ -34,11 +28,13 @@ const SelectField = ({
     >
       <SelectTrigger
         className={`${
-          isPriority(value) && value === "High"
+          value === "High"
             ? "bg-red-300"
-            : isPriority(value) && value === "Medium"
+            : value === "Medium"
             ? "bg-blue-300"
-            : "bg-gray-300"
+            : value === "Low"
+            ? "bg-gray-300"
+            : ""
         } rounded-full py-0 px-3 text-xs inline-flex`}
       >
         <SelectValue placeholder={placeholder} />
