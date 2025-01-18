@@ -11,11 +11,4 @@ export interface Task {
   priority: TPriority;
   dueDate?: Date | null;
   category: TCategory;
-
-  // Action
-  addTask?: () => void;
-  deleteTask?: (id: number) => void;
-  toggleTask?: (id: number) => void;
-  updateCategory?: (id: number) => void;
-  updatePriority?: (id: number) => void;
 }
